@@ -1,0 +1,341 @@
+:root {
+  --color-background: rgb(223, 223, 223);
+  --color-text: black;
+  --color-main: rgb(94, 188, 219);
+  --color-accent: rgb(47, 131, 47);
+
+  --color-error: rgb(184, 82, 82);
+
+  --color-1-hue: 0;
+  --color-2-hue: 60;
+  --color-3-hue: 250;
+  --color-4-hue: 120;
+  --saturation: 75%;
+  --lightness: 25%;
+}
+
+/******************************************************************************/
+
+.display-none {
+  display: none;
+}
+
+@keyframes errorFlash {
+  0% {
+    outline: 3px solid var(--color-error);
+  }
+  50% {
+    outline: none;
+  }
+  100% {
+    outline: 3px solid var(--color-error);
+  }
+}
+
+@keyframes hideTab {
+  from {
+    top: 0vh;
+    display: inline-block;
+  }
+  to {
+    top: -200vh;
+    display: inline-block;
+  }
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+/******************************************************************************/
+
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  position: relative;
+  background-color: var(--color-background);
+  box-sizing: border-box;
+}
+
+app-screen {
+  background-color: var(--color-background);
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  border-radius: 15px;
+  z-index: 1000;
+  display: inline-block;
+  overflow-y: scroll;
+}
+
+app-screen > div {
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+app-screen.app-screen-hidden-animation {
+  animation: hideTab 1s ease-in 0s 1;
+}
+
+app-screen.app-screen-hidden {
+  position: absolute;
+  top: -200vh;
+  z-index: 1001;
+}
+
+[contenteditable="true"] {
+  display: inline-block;
+  min-width: 1em;
+  min-height: 1em;
+}
+
+/******************************************************************************/
+
+body.palette-dark {
+  --lightness: 10%;
+}
+
+body.big {
+}
+
+/******************************************************************************/
+
+app-screen#loading {
+  text-align: center;
+  font-size: xx-large;
+}
+
+app-screen#loading > div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/******************************************************************************/
+
+app-screen#login > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+app-screen#login > div :is(h1, label, span, button) {
+  border-radius: 15px;
+  padding: 15px;
+}
+
+app-screen#login span[contenteditable="true"] {
+  font-size: 2em;
+  min-width: 7em;
+  box-shadow: rgba(60, 64, 67, 0.8) 0px 2px 4px 0px;
+  text-align: center;
+  max-width: 80%;
+  overflow-x: scroll;
+}
+
+app-screen#login span[contenteditable="true"].invalid {
+  outline: 3px solid var(--color-error);
+  position: relative;
+  animation: errorFlash 0.5s linear;
+}
+
+app-screen#login span#login_error {
+  color: var(--color-error);
+}
+
+app-screen#login button {
+  font-size: 1.5em;
+  background-color: var(--color-main);
+  border: none;
+  box-shadow: rgba(60, 64, 67, 0.8) 0px 2px 4px 0px;
+}
+
+app-screen#login form {
+  display: contents;
+}
+
+/******************************************************************************/
+
+app-screen#lobby > div {
+  display: flex;
+  width: 100%;
+  min-height: 100%;
+  flex-direction: column;
+  align-content: center;
+  text-align: center;
+}
+
+app-screen#lobby > div div {
+  border-radius: 15px;
+  padding: 5px 0;
+}
+
+app-screen#lobby #player {
+  font-size: 2em;
+  margin: 5px 0 5px 0;
+  box-shadow: rgba(60, 64, 67, 0.8) 0px 2px 4px 0px;
+}
+
+app-screen#lobby .userListOuter {
+  margin: 1em auto;
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  min-width: 50%;
+}
+
+app-screen#lobby #userList {
+  font-size: 1.5em;
+  display: flex;
+  flex-direction: column;
+}
+
+app-screen#lobby #userList > div {
+  margin: 5px 0 5px 0;
+  box-shadow: rgba(60, 64, 67, 0.8) 0px 2px 4px 0px;
+}
+
+/******************************************************************************/
+
+app-screen#question > div {
+  display: flex;
+  flex-direction: column;
+}
+
+app-screen#question :is(h1, h2) {
+  text-align: center;
+}
+
+app-screen#question div#buttons {
+  display: grid;
+  grid-template: 1fr 1fr 1fr 1fr;
+  gap: 5px;
+  margin: 1ch;
+  transition: opacity 0.5s ease-in-out;
+}
+
+app-screen#question div#buttons button {
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 1.3em;
+  border-radius: 10px;
+  padding: 1ch;
+}
+
+app-screen#question :is(#Adiv, #Bdiv, #Cdiv, #Ddiv) {
+  color: var(--color-background);
+  background-color: hsl(var(--color), var(--saturation), var(--lightness));
+}
+
+app-screen#question :is(#Adiv, #Bdiv, #Cdiv, #Ddiv).chosen-answer {
+  color: black;
+  background-color: hsl(
+    var(--color),
+    var(--saturation),
+    calc(100% - var(--lightness))
+  );
+}
+
+app-screen#question #Adiv {
+  --color: var(--color-1-hue);
+}
+
+app-screen#question #Bdiv {
+  --color: var(--color-2-hue);
+}
+
+app-screen#question #Cdiv {
+  --color: var(--color-3-hue);
+}
+
+app-screen#question #Ddiv {
+  --color: var(--color-4-hue);
+}
+
+app-screen#question div#buttons button span:first-child {
+  float: left;
+}
+
+app-screen#question:not(.show-answers) #buttons {
+  opacity: 0;
+}
+
+app-screen#question div#buttons.disabled button:active {
+  transform: none;
+}
+
+/******************************************************************************/
+
+app-screen#waiting {
+  text-align: center;
+}
+
+app-screen#waiting > div {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/******************************************************************************/
+
+app-screen#awards > div {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+}
+
+app-screen#awards div#winners {
+  margin: 1ch 3ch;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+app-screen#awards div#winners > div {
+  margin: 1ch 2ch;
+  padding: 10px 2ch;
+  box-shadow: rgba(60, 64, 67, 0.8) 0px 2px 4px 0px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+app-screen#awards div#winners > div > div:nth-child(2) {
+  font-size: 2em;
+  padding: 0 1ch;
+}
+
+app-screen#awards div#winners > div > div:last-child {
+  font-size: 1.5em;
+}
+
+app-screen#awards div#winners > div.winner-1 {
+  background-color: gold;
+  color: black;
+  font-weight: bolder;
+}
+
+app-screen#awards div#winners > div.winner-2 {
+  background-color: rgb(220, 220, 220);
+  color: black;
+  font-weight: bold;
+}
+
+app-screen#awards div#winners > div.winner-3 {
+  background-color: chocolate;
+  color: black;
+  font-weight: bold;
+}
+
+app-screen#awards div#winners > div.player {
+  outline: 3px solid green;
+}

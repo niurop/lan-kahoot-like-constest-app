@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Presentation</title>
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <app-screen id="loading"><div>Loading...</div></app-screen>
+
+    <app-screen id="lobby" class="app-screen-hidden">
+      <div>
+        <h1 id="title">Waiting for the game to start</h1>
+        <div id="instructions"></div>
+        <h2>Players:</h2>
+        <div id="userList"></div>
+      </div>
+    </app-screen>
+
+    <app-screen id="question" class="app-screen-hidden">
+      <div>
+        <h2>
+          Question [<span id="question_id"></span>/<span id="totalQuestions">
+          </span
+          >]:
+        </h2>
+        <h1 id="question"></h1>
+        <table cellspacing="0" cellpadding="0">
+          <tbody>
+            <tr id="Adiv">
+              <td>A[</td>
+              <td id="Apre"></td>
+              <td>]:</td>
+              <td id="A"></td>
+            </tr>
+            <tr id="Bdiv">
+              <td>B[</td>
+              <td id="Bpre"></td>
+              <td>]:</td>
+              <td id="B"></td>
+            </tr>
+            <tr id="Cdiv">
+              <td>C[</td>
+              <td id="Cpre"></td>
+              <td>]:</td>
+              <td id="C"></td>
+            </tr>
+            <tr id="Ddiv">
+              <td>D[</td>
+              <td id="Dpre"></td>
+              <td>]:</td>
+              <td id="D"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </app-screen>
+
+    <app-screen id="waiting" class="app-screen-hidden">
+      <div>Waiting for results</div>
+    </app-screen>
+
+    <app-screen id="awards" class="app-screen-hidden">
+      <div>
+        <h1>Ranking:</h1>
+        <div id="winners"></div>
+      </div>
+    </app-screen>
+  </body>
+</html>

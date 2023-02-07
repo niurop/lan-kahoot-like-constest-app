@@ -1,0 +1,36 @@
+{
+  "title": "New Game",
+  "admin_password": "password",
+  "instructions": "<div>wifi/SSID: <b>contest</b></div><div>password: <b>contest-pass</b></div><div>address/link: <b>192.168.0.11:8000</b></div>",
+  "gameState": -1,
+  "login": {
+    "minLength": 3,
+    "minLengthError": "Use at least 3 characters",
+    "maxLength": 40,
+    "maxLengthError": "Use maximum of 40 characters",
+    "allowedSymbols": "^[a-zA-Z0-9\\ \\_\\$\\&\\^\\%\\#\\=\\-\\!\\?\\~\\.\\:]+$",
+    "allowedSymbolsError": "You can use only letters, digits, and any of _ $ & ^ % # = - . ! ? ~ :",
+    "loginTakenError": "Somebody has already used this name",
+    "loginUnknownError": "You must use Your existing login"
+  },
+  "questions": [
+    {
+      "question": "Test question",
+      "answers": ["Answer A", "Answer B", "Answer C", "Answer D"]
+    },
+    {
+      "question": "Do You need internet connection for everything?",
+      "answers": ["No", "Yes", "Can I ask a friend?", "What is internet?"]
+    },
+    {
+      "question": "Is it harder to use LAN over WAN?",
+      "answers": [
+        "It is actually easier",
+        "Yes",
+        "What is LAN or WAN?",
+        "I don't know"
+      ]
+    }
+  ],
+  "questionId": 0
+}
