@@ -4,6 +4,8 @@ A simple app written for hosting kahoot like contests but geared towards LAN.
 
 The code was written at the last second, so it is not clean, but it is usable (I still plan on rewriting it).
 
+Game tested with 18 live participants, without any issues.
+
 [contest-app-showcase.webm](https://user-images.githubusercontent.com/28646040/217373910-a7d5a67f-aa30-408e-9257-81fbad949ce8.webm)
 
 ## Requirements
